@@ -1,0 +1,448 @@
+{
+  "whatsapp": "",
+  "catIcons": {},
+  "currencies": [
+    {
+      "code": "EGP",
+      "symbol": "EGP",
+      "rate": 1
+    },
+    {
+      "code": "USD",
+      "symbol": "$",
+      "rate": 55
+    },
+    {
+      "code": "EUR",
+      "symbol": "€",
+      "rate": 62
+    }
+  ],
+  "categories": [
+    "Historical",
+    "Beach",
+    "Desert"
+  ],
+  "trips": [
+    {
+      "id": "luxor",
+      "name": "Luxor",
+      "desc": "Temples · Nile Valley",
+      "about": "Home to Karnak and Luxor Temples on the banks of the Nile — one of the richest ancient sites in the world.",
+      "rating": 4.9,
+      "reviews": 1240,
+      "price": 1800,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Historical"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Luxor_Temple_at_night%2C_Luxor%2C_Egypt.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Luxor_Temple_R15.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Grounds%2C_Karnak_Temple%2C_Luxor%2C_LG%2C_EGY_%2848009651442%29.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Luxor%2C_Luxor_Temple%2C_sphinx_alley_at_night%2C_Egypt%2C_Oct_2004.jpg?width=1200"
+      ],
+      "lat": 25.7,
+      "lng": 32.65
+    },
+    {
+      "id": "aswan",
+      "name": "Aswan",
+      "desc": "River · Nubian Culture",
+      "about": "A calm Nile city with Philae Temple, felucca rides and Nubian culture.",
+      "rating": 4.8,
+      "reviews": 986,
+      "price": 1600,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Historical"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Philae_Temple_R03.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Philae_Temple_R01.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Temple_of_Philae_02.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Philae%2C_seen_from_the_water%2C_Aswan%2C_Egypt%2C_Oct_2004.jpg?width=1200"
+      ],
+      "lat": 24.09,
+      "lng": 32.9
+    },
+    {
+      "id": "siwa",
+      "name": "Siwa",
+      "desc": "Oasis · Desert",
+      "about": "A remote oasis in the Western Desert with palm groves, salt lakes and the old Shali fortress.",
+      "rating": 4.9,
+      "reviews": 742,
+      "price": 2000,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Desert"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Palms_of_the_Siwa_Oasis.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Old_Mosque_of_Shali_01.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/The_temple_of_the_god_Amun_in_Siwa_oasis.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Siwa_Oasis%2C_Houses_in_the_desert%2C_Egypt.jpg?width=1200"
+      ],
+      "lat": 29.2,
+      "lng": 25.52
+    },
+    {
+      "id": "giza",
+      "name": "Giza & Cairo",
+      "desc": "Pyramids · Sphinx",
+      "about": "See the Great Pyramids and the Sphinx, then explore Cairo's museums and old streets.",
+      "rating": 4.9,
+      "reviews": 2310,
+      "price": 2200,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Historical"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Giza_Pyramid_Complex_%2831956421147%29.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Giza_2015-11-10_Sphinx_05.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Giza_pyramid_complex_2010_4.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Giza_Pyramid_Complex_%2839932845093%29.jpg?width=1200"
+      ],
+      "lat": 29.98,
+      "lng": 31.13
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria",
+      "desc": "Mediterranean · Citadel",
+      "about": "Egypt's Mediterranean city: the Qaitbay Citadel, the seafront Corniche and fresh seafood.",
+      "rating": 4.7,
+      "reviews": 654,
+      "price": 1500,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Historical",
+        "Beach"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Citadel_of_Qaitbay%2C_Alexandria%2C_Egypt.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Citadel_of_Qaitbay%2C_Court%2C_Alexandria%2C_Egypt.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Flickr_-_archer10_%28Dennis%29_-_Egypt-14A-077.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/School_trip_to_the_Citadel_of_Qaitbay_in_Alexandria.jpg?width=1200"
+      ],
+      "lat": 31.2,
+      "lng": 29.92
+    },
+    {
+      "id": "hurghada",
+      "name": "Hurghada",
+      "desc": "Red Sea · Diving",
+      "about": "A Red Sea resort city known for coral reefs, diving, snorkeling and island boat trips.",
+      "rating": 4.8,
+      "reviews": 1180,
+      "price": 2400,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Beach"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Egypt-hurghada-sea01.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Egipt_redsea.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Boats_in_the_corals_of_Red_Sea.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Boat_near_Paradise_Island%2C_Hurghada.jpg?width=1200"
+      ],
+      "lat": 27.26,
+      "lng": 33.81
+    },
+    {
+      "id": "sharm",
+      "name": "Sharm El Sheikh",
+      "desc": "Red Sea · Resorts",
+      "about": "A Sinai resort town with Naama Bay, Ras Mohammed National Park and world-class diving.",
+      "rating": 4.8,
+      "reviews": 1420,
+      "price": 2800,
+      "guide": {
+        "enabled": false,
+        "name": "",
+        "price": 0,
+        "unit": "per day"
+      },
+      "categories": [
+        "Beach"
+      ],
+      "images": [
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Naama_Bay_R01.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Naama_Bay_Beach_R01.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/Gold_Beach_at_Ras_Um_Sid_Bay.jpg?width=1200",
+        "https://commons.wikimedia.org/wiki/Special:FilePath/La_barriera_corallina_di_Ras_Mohammed_-_panoramio.jpg?width=1200"
+      ],
+      "lat": 27.91,
+      "lng": 34.33
+    }
+  ],
+  "video": {
+    "enabled": true,
+    "url": "",
+    "title": "Discover Egypt",
+    "text": "Temples on the Nile, desert oases and Red Sea reefs — plan your next journey through the land of the pharaohs.",
+    "button": "Start exploring"
+  },
+  "stories": [
+    {
+      "id": "st-luxor",
+      "tag": "Historical",
+      "title": "Walk Through the Temples of Luxor",
+      "text": "Start at Karnak, wander along the sphinx avenue and end the day at Luxor Temple as the lights come on.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Luxor_Temple_at_night%2C_Luxor%2C_Egypt.jpg?width=1200",
+      "link": "",
+      "tripId": "luxor"
+    },
+    {
+      "id": "st-aswan",
+      "tag": "Nile",
+      "title": "Drift Down the Nile to Philae",
+      "text": "Hop on a felucca in Aswan and sail out to the island temple of Isis at Philae.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Philae_Temple_R03.jpg?width=1200",
+      "link": "",
+      "tripId": "aswan"
+    },
+    {
+      "id": "st-siwa",
+      "tag": "Desert",
+      "title": "Sleep Under the Stars in Siwa",
+      "text": "Float in a salt lake, explore the old Shali fortress and watch the sun set behind the palms.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palms_of_the_Siwa_Oasis.jpg?width=1200",
+      "link": "",
+      "tripId": "siwa"
+    },
+    {
+      "id": "st-giza",
+      "tag": "Historical",
+      "title": "Meet the Pyramids at Giza",
+      "text": "Stand in front of the Great Pyramid and the Sphinx, then spend an evening in Cairo's old streets.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Giza_Pyramid_Complex_%2831956421147%29.jpg?width=1200",
+      "link": "",
+      "tripId": "giza"
+    },
+    {
+      "id": "st-hurghada",
+      "tag": "Beach",
+      "title": "Snorkel the Reefs Off Hurghada",
+      "text": "Take a boat to the Red Sea islands, swim over the coral and relax on the sand.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egypt-hurghada-sea01.jpg?width=1200",
+      "link": "",
+      "tripId": "hurghada"
+    },
+    {
+      "id": "st-alex",
+      "tag": "Mediterranean",
+      "title": "A Day by the Sea in Alexandria",
+      "text": "Visit the Qaitbay Citadel, stroll along the Corniche and finish with fresh seafood.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Citadel_of_Qaitbay%2C_Alexandria%2C_Egypt.jpg?width=1200",
+      "link": "",
+      "tripId": "alexandria"
+    }
+  ],
+  "events": [
+    {
+      "id": "eco-egypt",
+      "category": "Sustainability",
+      "title": "Nile Eco Days",
+      "location": "Aswan, Egypt",
+      "description": "Explore ideas and activities that celebrate the Nile and sustainable travel.",
+      "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=85",
+      "link": ""
+    },
+    {
+      "id": "culture-cairo",
+      "category": "Art and culture",
+      "title": "Cairo Culture Week",
+      "location": "Cairo, Egypt",
+      "description": "A celebration of local art, music, crafts and Egyptian culture.",
+      "image": "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=85",
+      "link": ""
+    },
+    {
+      "id": "heritage-siwa",
+      "category": "Heritage",
+      "title": "Siwa Heritage Festival",
+      "location": "Siwa Oasis, Egypt",
+      "description": "Discover oasis traditions, local crafts and the landscapes of Siwa.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85",
+      "link": ""
+    }
+  ],
+  "places": [
+    {
+      "id": "cafe-nile",
+      "type": "Café",
+      "name": "Nile View Café",
+      "location": "Cairo, Egypt",
+      "description": "Relax with a Nile view and a comfortable atmosphere.",
+      "price": 180,
+      "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=85",
+      "details": "Enjoy a calm corner above the river with specialty coffee, fresh juices and homemade desserts. It is a good stop between sightseeing days, with air-conditioned indoor seating and a breezy terrace. Come around sunset for the best light over the water.",
+      "info": [
+        "Opening hours: 9:00 AM – 12:00 AM",
+        "Best for: Coffee, desserts and Nile views",
+        "Best time: Sunset",
+        "Average spend: about EGP 180 per person",
+        "Seating: Indoor and terrace",
+        "Good to know: Reservations recommended on weekends",
+        "Payment: Cash and cards"
+      ],
+      "images": [],
+      "map": ""
+    },
+    {
+      "id": "cafe-alex",
+      "type": "Café",
+      "name": "Alexandria Seaside Café",
+      "location": "Alexandria, Egypt",
+      "description": "A casual seaside stop for coffee, desserts and sunset views.",
+      "price": 220,
+      "image": "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=85",
+      "details": "A relaxed seaside café for coffee, ice cream and sweets with the Mediterranean in front of you. Ideal for a slow afternoon after visiting the Citadel or walking the Corniche; it gets lively in the evening.",
+      "info": [
+        "Opening hours: 10:00 AM – 1:00 AM",
+        "Best for: Sunset and desserts",
+        "Best time: Late afternoon",
+        "Average spend: about EGP 220 per person",
+        "Seating: Sea-view terrace",
+        "Good to know: Windy evenings — bring a light jacket",
+        "Payment: Cash and cards"
+      ],
+      "images": [],
+      "map": ""
+    },
+    {
+      "id": "activity-safari",
+      "type": "Entertainment",
+      "name": "Desert Safari Adventure",
+      "location": "Hurghada, Egypt",
+      "description": "A fun desert experience with sightseeing and outdoor activities.",
+      "price": 900,
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=85",
+      "details": "A guided drive through the desert dunes with photo stops, a short camel ride and a sunset tea break. Suitable for most ages; hotel pick-up can be arranged.",
+      "info": [
+        "Duration: About 5 hours",
+        "Includes: Transport and a local guide",
+        "Best time: Afternoon to sunset",
+        "Price: from EGP 900 per person",
+        "Bring: Sun protection, water and a light scarf",
+        "Good to know: Wear closed shoes",
+        "Booking: Confirm the pick-up point on WhatsApp"
+      ],
+      "images": [],
+      "map": ""
+    },
+    {
+      "id": "activity-felucca",
+      "type": "Activity",
+      "name": "Nile Felucca Ride",
+      "location": "Aswan, Egypt",
+      "description": "Enjoy a calm traditional boat ride along the Nile.",
+      "price": 500,
+      "image": "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=85",
+      "details": "Glide along the Nile on a traditional sailing boat with a local captain. Quiet, scenic and great for photos; you can stop near the islands and enjoy a cold drink on board.",
+      "info": [
+        "Duration: 1–2 hours",
+        "Best time: Sunset",
+        "Price: from EGP 500 per boat ride",
+        "Suitable for: Couples, families and small groups",
+        "Bring: Hat and sunglasses",
+        "Good to know: Weather and wind can change the route",
+        "Booking: Confirm the departure point on WhatsApp"
+      ],
+      "images": [],
+      "map": ""
+    },
+    {
+      "id": "activity-family",
+      "type": "Entertainment",
+      "name": "Family Fun Day",
+      "location": "Giza, Egypt",
+      "description": "A flexible entertainment option for families and groups.",
+      "price": 650,
+      "image": "https://images.unsplash.com/photo-1511882150382-421056c89033?auto=format&fit=crop&w=1200&q=85",
+      "details": "A flexible day of entertainment for families and groups, planned around ages and interests — games, light activities and relaxed breaks. Tell us your group size and we will suggest a plan.",
+      "info": [
+        "Suitable for: Families and groups",
+        "Duration: Flexible (half or full day)",
+        "Price: from EGP 650 per person",
+        "Includes: Planning and a coordinator",
+        "Good to know: Child-friendly options available",
+        "Booking: Share group size and ages on WhatsApp"
+      ],
+      "images": [],
+      "map": ""
+    },
+    {
+      "id": "activity-sea",
+      "type": "Activity",
+      "name": "Red Sea Boat Day",
+      "location": "Sharm El Sheikh, Egypt",
+      "description": "A full day of sea views, relaxation and water activities.",
+      "price": 1200,
+      "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85",
+      "details": "A full day on the Red Sea with boat rides, swimming and snorkeling stops, plus time to relax on deck. Snorkeling gear and a light lunch are part of a typical day.",
+      "info": [
+        "Duration: Full day",
+        "Includes: Boat trip and swimming stops",
+        "Price: from EGP 1,200 per person",
+        "Best time: Morning departure",
+        "Bring: Swimwear, towel and sun cream",
+        "Good to know: Sea conditions can affect the schedule",
+        "Booking: Confirm the departure time on WhatsApp"
+      ],
+      "images": [],
+      "map": ""
+    }
+  ],
+  "booking": {
+    "childPct": 50,
+    "basis": "person"
+  },
+  "extras": [
+    {
+      "id": "transport",
+      "name": "Transport",
+      "price": 800,
+      "unit": "day"
+    },
+    {
+      "id": "meals",
+      "name": "Meals",
+      "price": 300,
+      "unit": "personday"
+    }
+  ]
+}
