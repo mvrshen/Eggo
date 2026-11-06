@@ -25,7 +25,7 @@ nav a{color:var(--ink);text-decoration:none;font-size:17px;margin-inline-start:1
 .search input{flex:1;border:0;outline:0;background:none;font-size:24px;color:var(--ink)}
 [hidden]{display:none!important}
 .mq{margin:40px 0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
-.mqt{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mqt{display:flex;width:max-content;will-change:transform}
 .gi{width:26px;height:26px;object-fit:contain;filter:brightness(0) saturate(100%) invert(45%) sepia(44%) saturate(715%) hue-rotate(3deg) brightness(127%) contrast(65%)}
 .chip.on .gi{filter:brightness(0) invert(1)}
 .mqh{display:flex;flex:none}
@@ -34,7 +34,7 @@ nav a{color:var(--ink);text-decoration:none;font-size:17px;margin-inline-start:1
 .ci{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;color:var(--gold);background:linear-gradient(145deg,rgba(230,201,138,.35),rgba(184,146,63,.12));border:1px solid rgba(184,146,63,.5)}
 .chip.on{background:linear-gradient(135deg,#d9b866,#b8923f);color:#fff}
 .chip.on .ci{color:#fff;background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6)}
-@media (prefers-reduced-motion:reduce){.mqt{animation:none}.mq{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.mq{-webkit-mask-image:none;mask-image:none}}
 h2.t{font-size:34px;margin:50px 0 6px}.sub{color:var(--mute);margin:0 0 22px;font-size:18px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
 .card{background:var(--card);border-radius:22px;padding:14px 14px 20px;box-shadow:var(--shadow);text-align:center;cursor:pointer;transition:transform .2s}.card:hover{transform:translateY(-4px)}
@@ -207,6 +207,7 @@ header.header-hidden{transform:translateY(calc(-100% - 24px));opacity:0;pointer-
 <section id="s3" hidden><h2 class="t rv">Explore by interest</h2><div class="ints" id="ints"></div></section>
 <footer class="rv">Egypt Go · AI-powered travel for Egypt · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">About</a></footer>
 </div>
+<div class="ov wov" id="wov" hidden><div class="box wbox" id="wbox"></div></div>
 <div class="ov" id="ov" hidden><div class="box" id="box"></div></div>
 
 <style id="masrgo-polish">
@@ -357,6 +358,12 @@ footer{padding-top:18px;border-top:1px solid color-mix(in srgb,var(--gold) 12%,t
   .place-body{padding:18px}.place-body h3{font-size:26px}.place-desc{font-size:16px}
   .place-dt,.place-wa{padding:14px 16px;font-size:16px;width:100%}.place-btns{width:100%;flex-direction:column}
 }
+.mq{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}.mq.drag{cursor:grabbing}
+.wov{z-index:70}.wbox{max-width:420px;text-align:center;padding:26px 22px}
+.wbox h3{margin:10px 0 6px;font-size:24px}.wbox p{color:var(--mute);line-height:1.6;margin:0;font-size:16px}
+.wart svg{max-width:100%;height:auto}
+.wbtn{display:flex;flex-direction:column;gap:10px;margin-top:20px}.wbtn .btn{width:100%;padding:15px;font-size:17px}
+.wbtn a.btn{display:block;text-decoration:none;text-align:center;box-sizing:border-box}
 </style>
 
 <script>
@@ -392,10 +399,19 @@ addEventListener("scroll",()=>requestAnimationFrame(moveH),{passive:true});addEv
 const SV={h:'<path d="M3 9l9-5 9 5M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 20h18"/>',b:'<path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',d:'<path d="M2 20L10 7l8 13zM13 20l4-6.5 5 6.5"/><circle cx="18" cy="5" r="1.8"/>',c:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>'};
 function icon(n){const u=(D.catIcons||{})[n];if(u)return`<img class="gi" src="${esc(u)}" alt="" onerror="this.style.visibility='hidden'">`;const k=/hist|temple|cultur|museum|ancient|تاريخ|معبد|آثار|اثار/i.test(n)?"h":/beach|sea|dive|snork|water|nile|river|cruise|شاطئ|بحر|غوص|نيل|ساحل/i.test(n)?"b":/desert|safari|oasis|camp|صحراء|سفاري|واحة/i.test(n)?"d":"c";
 return`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${SV[k]}</svg>`}
+let mqX=0,mqW=1,mqVel=0,mqDrag=null,mqT=0,mqRaf=0,mqSkip=false;
+const MQ_BASE=45,MQ_RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const mqNorm=x=>{x=x%mqW;return x>0?x-mqW:x};
+function mqApply(){const t=$("mqt");if(t)t.style.transform="translateX("+mqX.toFixed(1)+"px)"}
+function mqTick(now){const dt=Math.min(.05,(now-mqT)/1000||0);mqT=now;
+if(!mqDrag&&$("mqt")){mqX=mqNorm(mqX+((MQ_RM?0:MQ_BASE)+mqVel)*dt);mqVel*=Math.pow(.02,dt);mqApply()}
+mqRaf=requestAnimationFrame(mqTick)}
 function buildMq(){const mq=$("mq"),set=D.categories.map(c=>`<button class="chip" data-t="${esc(c)}"><span class="ci">${icon(c)}</span>${esc(c)}</button>`).join("");
 if(!set){mq.innerHTML="";return}
 mq.innerHTML=`<div class="mqt" id="mqt">${set}</div>`;const w=$("mqt").scrollWidth||1,k=Math.max(1,Math.ceil(mq.clientWidth/w)),half=set.repeat(k);
-$("mqt").innerHTML=`<div class="mqh">${half}</div><div class="mqh">${half}</div>`;$("mqt").style.animationDuration=Math.max(12,w*k/45)+"s"}
+$("mqt").innerHTML=`<div class="mqh">${half}</div><div class="mqh">${half}</div>`;
+mqW=$("mqt").firstElementChild.getBoundingClientRect().width||1;mqX=mqNorm(mqX||-1);mqApply();
+if(!mqRaf)mqRaf=requestAnimationFrame(t=>{mqT=t;mqTick(t)})}
 function fixPicks(){const ids=D.trips.map(t=>t.id);picks=picks.filter(i=>ids.includes(i));const n=Math.min(3,ids.length);
 while(picks.length<n){const r=ids.filter(i=>!picks.includes(i));picks.push(r[Math.floor(Math.random()*r.length)])}}
 const curObj=()=>(D.currencies||[]).find(c=>c.code===CUR)||(D.currencies||[])[0]||{code:"EGP",symbol:"EGP",rate:1};
@@ -471,9 +487,9 @@ function renderPlaces(){
 function inquirePlace(id){
   const p=(D.places||[]).find(x=>x.id===id); if(!p)return;
   const num=en(D.whatsapp||"").replace(/\D/g,"");
-  if(!num)return alert("WhatsApp number is not set yet.");
+  if(!num)return noWA();
   const msg=`Hello Egypt Go 👋\nI'd like to ask about: ${p.name}\nType: ${p.type||"Place"}\nLocation: ${p.location||"Egypt"}\nPrice: ${p.price>0?("EGP "+fmt(p.price)):"Please advise"}\n${location.href.split("#")[0]}`;
-  window.open("https://wa.me/"+num+"?text="+encodeURIComponent(msg),"_blank");
+  goWA("https://wa.me/"+num+"?text="+encodeURIComponent(msg));
 }
 $("placeFilters").onclick=e=>{const b=e.target.closest("[data-ptype]");if(!b)return;placeType=b.dataset.ptype;renderPlaces()};
 $("placesGrid").onclick=e=>{const d=e.target.closest("[data-place-dt]");if(d)return openPlace(d.dataset.placeDt);const b=e.target.closest("[data-place-wa]");if(b)return inquirePlace(b.dataset.placeWa);const c=e.target.closest(".place-card");if(c)openPlace(c.dataset.pid)};
@@ -526,6 +542,14 @@ $("pg").onclick=e=>{const b=e.target.closest("[data-pg]");if(!b||b.disabled)retu
 const onGrid=e=>{const b=e.target.closest(".bm");if(b){e.stopPropagation();const id=b.dataset.bm;saved.has(id)?saved.delete(id):saved.add(id);try{localStorage.setItem("masrgo_saved",JSON.stringify([...saved]))}catch(e){}b.classList.toggle("on");return}
 const c=e.target.closest(".card");if(c)openTrip(c.dataset.id)};
 $("g1").onclick=onGrid;$("g2").onclick=onGrid;
+(function(){const mq=$("mq");let sx=0,sX=0,moved=0,lastX=0,lastT=0,v=0,pid=null;
+mq.addEventListener("pointerdown",e=>{if(e.button)return;mqDrag=true;sx=lastX=e.clientX;sX=mqX;moved=0;lastT=performance.now();v=0;mqVel=0;pid=e.pointerId});
+mq.addEventListener("pointermove",e=>{if(!mqDrag||e.pointerId!==pid)return;const dx=e.clientX-sx;moved=Math.max(moved,Math.abs(dx));
+if(moved>6&&!mq.classList.contains("drag")){mq.classList.add("drag");try{mq.setPointerCapture(pid)}catch(_){}}
+if(moved>6){mqX=mqNorm(sX+dx);mqApply();const n=performance.now(),dt=(n-lastT)/1000;if(dt>0)v=v*.6+((e.clientX-lastX)/dt)*.4;lastX=e.clientX;lastT=n}});
+const end=()=>{if(!mqDrag)return;mqDrag=null;mq.classList.remove("drag");if(moved>6){mqSkip=true;setTimeout(()=>{mqSkip=false},80);mqVel=Math.max(-1200,Math.min(1200,v))}pid=null};
+mq.addEventListener("pointerup",end);mq.addEventListener("pointercancel",end);
+mq.addEventListener("click",e=>{if(mqSkip){e.stopPropagation();e.preventDefault();mqSkip=false}},true)})();
 $("mq").onclick=e=>{const c=e.target.closest(".chip");if(!c)return;tag=tag===c.dataset.t?"":c.dataset.t;pageN=1;render()};
 $("ints").onclick=e=>{const c=e.target.closest(".int");if(!c)return;tag=c.dataset.ic;pageN=1;render();$("s1").scrollIntoView({behavior:"smooth",block:"start"})};
 $("mapbox").onclick=e=>{const g=e.target.closest(".pin");if(g)openTrip(g.dataset.pid)};
@@ -537,12 +561,12 @@ $("q").oninput=()=>{RV=false;pageN=1;render();RV=true};
 /* ===== Trip modal ===== */
 const closeOv=()=>{$("ov").hidden=true;document.body.style.overflow="";clearInterval(timer);cur=null};
 $("ov").onclick=e=>{if(e.target===$("ov"))closeOv()};
-addEventListener("keydown",e=>{if(e.key==="Escape")closeOv()});
+addEventListener("keydown",e=>{if(e.key==="Escape"){if(!$("wov").hidden)$("wov").hidden=true;else closeOv()}});
 function openTrip(id){const t=D.trips.find(x=>x.id===id);if(!t)return;const im=(t.images&&t.images.length)?t.images:[""];let i=0;
 $("box").className="box big";
 $("box").innerHTML=`<div class="sl"><div class="slt">${im.map(u=>`<img src="${esc(u)}" alt="" draggable="false" onerror="this.style.visibility='hidden'">`).join("")}</div>${im.length>1?`<div class="dots">${im.map((u,k)=>`<i class="${k?"":"on"}" data-d="${k}"></i>`).join("")}</div>`:""}<button class="x" data-act="close">×</button></div><div class="bd"><h2>${esc(t.name)}</h2><p class="meta">${esc(t.desc)} · ${esc(t.rating)} <span class="star">★</span> (${fmt(t.reviews)})</p>${t.about?`<p>${esc(t.about)}</p>`:""}<div class="pr2">From ${money(t.price)} / night · Free cancellation</div>
 ${t.guide&&t.guide.enabled?`<div class="guide-box"><b>🧭 Tour guide${t.guide.name?` · ${esc(t.guide.name)}`:""}</b><div class="guide-price">Guide service: ${money(t.guide.price||0)} ${esc(t.guide.unit||"per day")}</div><span class="guide-pill">Available with this trip</span></div>`:""}
-<div class="bk-wrap" id="bkw" hidden>${bkHTML(t)}</div><div class="act2"><button class="btn dt" data-act="details" aria-expanded="false">Details</button><button class="btn wa" data-act="book">Book on WhatsApp</button></div></div>`;bkInit(t);
+<div class="bk-wrap" id="bkw">${bkHTML(t)}</div><div class="act2"><button class="btn wa" data-act="book">Book on WhatsApp</button></div></div>`;bkInit(t);
 const sl=$("box").querySelector(".sl"),tr=sl.querySelector(".slt");
 const show=()=>{tr.style.transform=`translateX(${-i*100}%)`;$("box").querySelectorAll(".dots i").forEach((e,k)=>e.classList.toggle("on",k===i))};
 const go=n=>{i=(n+im.length)%im.length;show()};
@@ -553,6 +577,12 @@ sl.onpointermove=e=>{if(x0===null)return;dx=e.clientX-x0;tr.style.transform=`tra
 const end=()=>{if(x0===null)return;const w=sl.clientWidth;x0=null;sl.classList.remove("drag");if(Math.abs(dx)>w*.15)go(i+(dx<0?1:-1));else show();auto()};
 sl.onpointerup=end;sl.onpointercancel=end;
 cur={t,go:n=>{go(n);auto()},i:()=>i};show();auto();$("ov").hidden=false;document.body.style.overflow="hidden"}
+/* ===== WhatsApp confirmation ===== */
+const WA_ART='<svg viewBox="0 0 200 150" width="200" height="150" aria-hidden="true"><circle cx="100" cy="78" r="64" fill="#f6e8cf"/><circle cx="152" cy="36" r="14" fill="#f1d79a"/><path d="M14 128l38-54 38 54z" fill="#e3c88f"/><path d="M60 128l32-44 32 44z" fill="#d6b266"/><rect x="48" y="30" width="104" height="70" rx="24" fill="#25d366"/><path d="M68 96L60 124L94 98z" fill="#25d366"/><circle cx="86" cy="62" r="5.5" fill="#fff"/><circle cx="114" cy="62" r="5.5" fill="#fff"/><path d="M82 77q18 17 36 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M166 94l24-9-9 24-4-10z" fill="#b8923f"/><path d="M28 36l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#b8923f"/><path d="M172 62l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#f1d79a"/></svg>';
+let waUrl="";
+function goWA(url){waUrl=url;$("wbox").innerHTML=`<div class="wart">${WA_ART}</div><h3>Heading to WhatsApp</h3><p>Your request is ready. We’ll open WhatsApp so you can send it to us — the final price and details are confirmed there.</p><div class="wbtn"><a class="btn wa" data-w="go" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Continue to WhatsApp</a><button class="btn ghost" data-w="no">Not now</button></div>`;$("wov").hidden=false}
+function noWA(){$("wbox").innerHTML=`<div class="wart">${WA_ART}</div><h3>WhatsApp isn’t set up yet</h3><p>The WhatsApp number hasn’t been added to this site yet. If you are the owner, open Developer mode (the gear icon) and add it under “WhatsApp number”.</p><div class="wbtn"><button class="btn ghost" data-w="no">OK</button></div>`;$("wov").hidden=false}
+$("wov").onclick=e=>{const b=e.target.closest("[data-w]");if(b&&b.dataset.w==="go"){setTimeout(()=>{$("wov").hidden=true},400)}else if(b||e.target===$("wov"))$("wov").hidden=true};
 /* ===== Booking estimate ===== */
 const UN={person:"per person",day:"per day",personday:"per person / day",trip:"per trip"};
 let bk={a:2,c:0,n:1,x:new Set()},bkT=null;
@@ -570,10 +600,10 @@ $("bk-t").textContent="≈ "+money(bkCalc(bkT).total)}
 function bkInit(t){bkT=t;bk={a:2,c:0,n:1,x:new Set()};bkUpdate()}
 function bkStep(code){const k=code[0],dl=code[1]==="+"?1:-1,lim={a:[1,20],c:[0,20],n:[1,30]}[k];bk[k]=Math.max(lim[0],Math.min(lim[1],bk[k]+dl));bkUpdate()}
 $("box").onchange=e=>{const x=e.target.closest&&e.target.closest("[data-x]");if(x&&bkT){x.checked?bk.x.add(x.dataset.x):bk.x.delete(x.dataset.x);bkUpdate()}};
-function book(t){const n=en(D.whatsapp||"").replace(/\D/g,"");if(!n)return alert("WhatsApp number is not set yet.");
+function book(t){const n=en(D.whatsapp||"").replace(/\D/g,"");if(!n)return noWA();
 const c=bkCalc(t),ex=bkExtras(t).filter(x=>bk.x.has(x.id)).map(x=>x.name),cv=curObj().code!=="EGP"?" (≈ "+money(c.total)+")":"";
 const msg=`Hello Egypt Go 👋\nI'd like to book: ${t.name}\nAdults: ${bk.a} · Children: ${bk.c} · Nights: ${bk.n}\nExtras: ${ex.length?ex.join(", "):"None"}\nEstimated total: EGP ${fmt(Math.round(c.total))}${cv} (approx. — please confirm the final price)\n${location.href.split("#")[0]}`;
-window.open("https://wa.me/"+n+"?text="+encodeURIComponent(msg),"_blank")}
+goWA("https://wa.me/"+n+"?text="+encodeURIComponent(msg))}
 /* ===== Developer mode ===== */
 function login(){$("box").className="box";$("box").innerHTML=`<h3>Developer mode</h3><input id="pw" type="password" placeholder="Password" autocomplete="off"><p class="err" id="err"></p><div class="row"><button class="btn" data-act="go">Enter</button><button class="btn ghost" data-act="close">Cancel</button></div>`;$("ov").hidden=false;$("pw").focus();$("pw").onkeydown=e=>{if(e.key==="Enter")tryLogin()}}
 function tryLogin(){if($("pw").value==="333333"){admin=true;panel()}else $("err").textContent="Wrong password"}
