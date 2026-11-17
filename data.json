@@ -444,5 +444,26 @@
       "price": 300,
       "unit": "personday"
     }
-  ]
+  ],
+  "model": {
+    "enabled": true,
+    "src": "https://sketchfab.com/models/f79ba82300cc4b9b9637d94f8959e970/embed",
+    "title": "Meet the Golden Mask",
+    "text": "Drag to rotate it and pinch to zoom — explore the famous funerary mask of Tutankhamun up close in 3D.",
+    "creditTitle": "Tutankhamun mask - Hunyuan",
+    "creditUrl": "https://sketchfab.com/3d-models/tutankhamun-mask-hunyuan-f79ba82300cc4b9b9637d94f8959e970",
+    "author": "Roberto Domínguez",
+    "authorUrl": "https://sketchfab.com/vmmaniac"
+  },
+  "gem": {
+    "enabled": true,
+    "kicker": "Visit in person",
+    "title": "Want to see it for real?",
+    "text": "Contact us to book tickets for the Grand Egyptian Museum.\nهل تريد رؤيته على الحقيقة؟ تواصل معنا لحجز تذاكر المتحف المصري الكبير (الجراند ميوزيم).",
+    "button": "Contact us on WhatsApp",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Egyptian_Museum_2019-11-07d.jpg?width=1400",
+    "credit": "Photo: Djehouty / Wikimedia Commons, CC BY-SA 4.0",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Grand_Egyptian_Museum_2019-11-07d.jpg",
+    "msg": "Hello Egypt Go 👋\nI'd like to book tickets for the Grand Egyptian Museum.\nNumber of visitors: "
+  }
 }
